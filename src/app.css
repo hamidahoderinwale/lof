@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+:root {
+  font-family: 'Open Sans', system-ui, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color: #1f2937;              /* Tailwind's gray-900 */
+  background-color: #f3f4f6;   /* Tailwind's gray-100 */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset & Layout */
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.wrapper {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Typography */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  font-weight: 600;
+  color: #2563eb;             /* Tailwind's blue-600 */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Upload List */
+.upload-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.upload-item {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+
+.upload-title {
+  font-size: 1.125rem;        /* text-lg */
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.upload-date {
+  font-size: 0.875rem;        /* text-sm */
+  color: #4b5563;             /* gray-600 */
+  margin-top: 0.25rem;
+}
+
+.upload-description {
+  margin-top: 0.5rem;
+}
+
+.upload-tags {
+  margin-top: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  background-color: #e5e7eb; /* gray-200 */
+  color: #1f2937;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  margin-right: 0.25rem;
+}
