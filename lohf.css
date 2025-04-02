@@ -1,45 +1,63 @@
-/* Typography */
+/* ========== Typography & Base Styles ========== */
+:root {
+  --text-primary: #333;
+  --text-secondary: #444;
+  --text-tertiary: #666;
+  --border-color: #eee;
+  --link-color: #2b6cb0;
+  --hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition-fast: 0.2s ease;
+}
+
 body {
   font-family: "Georgia", serif;
   line-height: 1.6;
-  color: #333;
-  max-width: 800px;
+  color: var(--text-primary);
+  max-width: min(800px, 90vw);
   margin: 0 auto;
   padding: 2rem;
+  background-color: #fafafa;
 }
 
+/* ========== Header Styles ========== */
 .header h1 {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .pronunciation {
-  font-size: 1.2rem;
-  color: #666;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: var(--text-tertiary);
   font-style: italic;
+  margin-top: 0.25rem;
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  color: #444;
-  margin-top: 0;
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  font-weight: 400;
 }
 
-/* Narrative sections */
+/* ========== Narrative Sections ========== */
 .narrative section {
   margin-bottom: 3rem;
 }
 
 .narrative h2 {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.5rem;
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
 }
 
-/* Artifacts section */
+/* ========== Artifacts Section ========== */
 .artifacts {
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-color);
 }
 
 .artifact-grid {
@@ -50,34 +68,63 @@ body {
 }
 
 .artifact-card {
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 8px;
-  transition: transform 0.2s;
+  transition: all var(--transition-fast);
+  background: white;
 }
 
 .artifact-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: var(--hover-shadow);
 }
 
 .artifact-link {
   display: inline-block;
   margin-top: 1rem;
-  color: #2b6cb0;
+  color: var(--link-color);
   text-decoration: none;
   font-weight: 500;
+  transition: color var(--transition-fast);
 }
 
 .artifact-link:hover {
   text-decoration: underline;
+  color: color-mix(in srgb, var(--link-color), black 15%);
 }
 
 .artifact-link.external::after {
   content: " ↗";
+  display: inline-block;
+  margin-left: 0.25rem;
 }
 
 .coming-soon {
   color: #999;
   cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* ========== Responsive Improvements ========== */
+@media (max-width: 600px) {
+  body {
+    padding: 1.5rem;
+  }
+  
+  .artifact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== Accessibility Improvements ========== */
+@media (prefers-reduced-motion) {
+  .artifact-card {
+    transition: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }
