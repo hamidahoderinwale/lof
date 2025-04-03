@@ -1,0 +1,848 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Procedural Knowledge Libraries for Data Visualization Engineers},
+  pdfkeywords={procedural knowledge, data
+visualization, metadata, knowledge management},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Procedural Knowledge Libraries for Data Visualization Engineers}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+This work explores the concept of procedural knowledge libraries
+tailored for data visualization engineers. It discusses the dynamic
+nature of such libraries, the importance of capturing procedural
+metadata, and the implications for knowledge preservation and retrieval.
+The paper also examines existing tools and methodologies, highlighting
+their limitations and proposing a framework for more effective
+procedural knowledge management.
+\end{abstract}
+
+\renewcommand*\contentsname{Table of Contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\section{Introduction}\label{introduction}
+
+Initially, this centered around procedural knowledge as a whole entity
+and now it's information about the process of building new knowledge
+itself. Explicating these processes makes it possible to audit
+{[}human/machine{]} reasoners. You can imagine having repos of
+procedural knowledge for those analyzing (building models of) the same
+dataset. This framework would then make it possible to assess the
+mechanistic differences between their approaches, clearly defining the
+branches of thought that took place.
+
+The important distinction to make here is that libraries are systems;
+they are dynamic, as the contents within them are living. To date,
+traditional ``libraries'' have assumed otherwise. Furthermore, the
+objects inside them are defined as an artifact of knowledge. That is,
+artifacts that are the product of thought and developed with a goal in
+mind. The function of the system is then to be a home to these artifacts
+and preserve them for prosperity's sake, but more importantly for
+retrieval's sake. As such, while the integrity of the work should be
+preserved, there are ways to build the system and store the objects such
+that this can be done.
+
+Provenance refers to the lineage of an object. Provenance, synonymous
+with metadata, has been developed with the static knowledge artifact in
+mind, so extending upon it for the sake of the dynamic artifact is key
+for a ``new age of libraries.''
+
+Now, we are faced with the question of what it means to develop new
+knowledge. That is, what is something tractable than we can anchor to,
+to help build better libraries: libraries that work for knowledge that
+evolves over time. I use the instance of model-building. While there's
+no dedicated library to models, they exist within research papers,
+repositories, and notebooks. Here, I outline the ways that we can
+capture how they are developed (e.g.~improved version control,
+collaboratively, integrating ``layered context architecture''), what
+they mean (i.e.~to help people find exactly what they need by
+explicating what models and their requests mean), what it looks like to
+retrieve them (the ideal interface to help people search in accordance
+with their preferences), etc. And then I consider how they may fit into
+a larger system: how they may be cataloged, organized (e.g., the
+metadata that can be assigned to them, scalable metadata attribution,
+etc.), and stored (e.g.~internet search engine that works for
+``findings.'').
+
+Here, we focus on the model-builder who is building graphical models or
+visualizations. Visualization is often the last step in conveying
+insight and analysis of data that has been obtained through the research
+process. Therefore, within this test-bed, we lay out a framework and
+suggest the limitations and trade-offs in real-world application (i.e.
+Log-based CRDTs being computationally expensive than traditional CRDTS),
+concluding with discussion on promising speculative and existing areas
+of work to address them.
+
+\section{Status quo}\label{status-quo}
+
+\begin{itemize}
+\tightlist
+\item
+  File versioning where you decide what's a version. For example, naming
+  versions of a project
+  \href{https://researchdata.wisc.edu/news/version-control-for-research-projects/}{as}
+  ``v1, v2, v3.'' Most document libraries have some version of crude
+  file records. \href{https://arxiv.org/}{arXiv}, the preprint
+  repository will keep versions of a paper as they're re-uploaded with
+  edits from the authors. Google Scholar indexes the versions of a paper
+  and will link it to the same citation.
+\item
+  Versioning with a Distributed Version Control System (DVCS) such as
+  Git where you have logs of your past commits (that make your versions)
+  and cloud DVCS where you're able to collaborate with others. Here,
+  there's not only versions pertinent to the changes that you make, but
+  the changes that other people make to your instance of the project,
+  forked versions of your project, and the changes that their
+  collaborators make to those instances.
+\item
+  There's a number of domain-specific projects and tools, such as
+  \href{https://codalab.org/}{CodaLab} where machine learning
+  researchers can host and run their experiments (reproducible) and
+  share their papers in executable form as worksheets.
+\item
+  For visualization workflows--the primary application of this
+  project--there's
+  \href{https://www.vistrails.org//index.php/Main_Page}{VisTrails}, a
+  provenance tracker for visualizations where data is stored in XML
+  files. With it, users can query workflows, as the system tracks
+  decisions and data products to help answer the actions that led to a
+  result. It's core focus is reproducibility. It's mainly developed for
+  Python and Python-based visualization libraries.
+\end{itemize}
+
+\href{https://www.perplexity.ai/search/overview-of-viztrails-fCsottRfQR6P0aoMyMLVZg}{Perplexity
+trail} (could VizTrail work for a UMAP model and viz? What are its
+capabilities?)
+
+\section{Overview}\label{overview}
+
+\begin{itemize}
+\item
+  Broadening the scope of the library
+
+  \begin{itemize}
+  \item
+    Procedural knowledge libraries are living and they're archives of
+    ``dynamic'' reasoning.
+  \item
+    There should not be a distinction because even static artifacts take
+    time to make and evolve over time. {Even if we have static artifacts
+    our archives should be dynamic to account for development.}
+  \item
+    Preserving the right to ``priviledged information.''
+  \item
+    Trails are now included in the corpus of knowledge and librarians
+    should be able to navigate them and they should be included in the
+    set of things that we want to query to answer the questions that we
+    pose. In other words, including the drafted states means you can
+    have ``end-to-end'' libraries: libraries of reasoning and libraries
+    of artifacts.
+  \item
+    This won't come without intervention, but then how do you translate
+    the ``what'' and ``how'' of development into the ``why?" Next, why
+    does it matter if you can do that?
+  \item
+    Barriers to tracking history
+
+    \begin{itemize}
+    \item
+      Problems with CRDTs
+
+      \begin{itemize}
+      \item
+        Eg-walker algorithm as alternative:
+        https://arxiv.org/pdf/2409.14252 (allows for fine-grained
+        editing history, mentioned the promise in being extended to
+        rich-text, graphics, and other applications; HN thread suggests
+        that this would need an additoinal CRDT implemented for
+        rich-test)
+      \item
+        (From thread) might be fruitful to look at what exists for
+        photoshop and similar software: where layers can cam be
+        inserted/deleted and as a result the index of following items
+        update. And then there's a question of how layer re-orders would
+        work. (a set of operations, even graph where each event
+        corresponds to an operation, replay, apply/retreat/advance
+        methods for eddicient replay)
+      \item
+        If you have an advanced CRDT say XCRDT which represents the
+        internal structure in your work then there are way ways to
+        combine the original operations with the CRDT operations.
+      \end{itemize}
+    \item
+      The non-linearity of history (Log-based CRDTs:
+      https://sites.cs.ucsb.edu/~ckrintz/papers/ic2e22.pdf)
+    \item
+      Format / interoperabilityof historical data
+    \item
+      Key parameters of queries/history/metadata
+    \end{itemize}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      This is useful because you can distinguish goals and deviate from
+      these goals (set out by others or your past self) in pointed,
+      clear ways.
+    \end{itemize}
+  \end{itemize}
+\item
+  The implications of broadening the scope:
+
+  \begin{itemize}
+  \item
+    It takes more to train to become a librarian. The scope of the
+    librarian also evolves. The librarian is always the human but
+    machines can be tools to help us become better ones (work faster,
+    distributively, and more effectively)
+  \item
+    Engineering and research questions that stem from this, especially
+    on the implementation side.
+  \item
+    The different layers of context: action-layer, procedural-layer,
+    narrative-layer, object/output-layer (reconstructing by laying these
+    on top of each other and have them span the space of time in the
+    horizontal direction) --\textgreater{} assuming this takes the form
+    of a database
+
+    \begin{itemize}
+    \item
+      From CGPT: ``You have 4-D GithHub (model = code (action) +
+      reason/method/strategy (procedural intent, step in readable
+      language, what someone else could theoretically carry out) +
+      interpretation (why the action was done, what outcome was inferred
+      from the reason for the code, reason for the strategy)compared to
+      2-D GitHub (action (what was done) + object (the output))''
+
+      \begin{itemize}
+      \item
+        4-D (new): Model = Action + Rationale + Interpretation + Object
+      \item
+        2-D (old): Model = Action + Object
+      \item
+        \textbf{Reconstructing narratives from the procedural
+        information: turning procedural information into knowledge}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\section{How to read this work. Listing the organization of the
+paper.}\label{how-to-read-this-work.-listing-the-organization-of-the-paper.}
+
+\section{Structure and points}\label{structure-and-points}
+
+\begin{itemize}
+\item
+  Redefine what is a library in terms of its function and its form
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This assumes that there's some core, instrinsic properties that make
+    it a library and the rest of the variables we can play with
+    according to what's nee
+  \end{itemize}
+\item
+  There's a gap in the way that we currently store knowledge
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What provenance do we already
+    \href{https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7192714}{capture}?
+  \end{itemize}
+\item
+  How we manage information might matter more than just the sheer amount
+  of knowledge that we have
+\item
+  Procedural knowledge is the one we try the least to preserve but it
+  holds a wealth of insight
+\item
+  How do you interact with this kind of procedural knowledge as a
+  librarian?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    That is, how do you query and what does retrieval look like? (This
+    seems unexplored).
+  \end{itemize}
+
+  {Trying to quantify the current (tacit) knowledge loss when you don't
+  log}
+\end{itemize}
+
+\section{Motivations \& Real-World
+applications}\label{motivations-real-world-applications}
+
+\begin{itemize}
+\item
+  More than just capturing procedural knowledge how do you make it
+  operational.
+\item
+  Being able to have ``structured procedural metadata'\,' for search in
+  internet research libraries. For example, you could have
+  methodology-based queries. For a tool like Elicit, it would be
+  possible to search for papers that use specific methods, had margins
+  or metric results within these ranges, and so on: this would make it
+  easier to conduct meta-analyses.
+\item
+  Being able to abstract away the implementation completely and pick
+  between different workflows on the output-layer.
+\item
+  Procedural knowledge libraries are effectively tutorials--they allow
+  people to do the things you've done beyond authentication.
+\item
+  We can get better understandings of systems and do summary statistics
+  and make opinions and judgements about the world.
+\item
+  Help interpreters understand how the ``formalism'' and/or
+  ``representation'' disagrees with reality. And being able to assert
+  this at a more granular, generalizable angle. Models are not
+  objectively worse than each other (for the most part) but they do
+  carry different goals and assumptions and it's useful to make that
+  clear.
+\item
+  Increased use of ``unsupervised methods.'' This
+  \href{https://arxiv.org/pdf/2111.15506}{paper} mentions ``unsupervised
+  explanatory steps; others off-load the analysis to an unsupervised
+  model (e.g.~Unsupervised Dimensionality Component Analysis).
+\item
+  The Colab Data Science Agent isn't very good. There isn't training
+  data for this kind of work.
+\item
+  There's Julius AI, Tableau, Causal (Taimur), etc.
+\item
+  There's no data analysis reasoning examples that would help them
+  express the different choices that they went down.
+\item
+  What would it look like to have branching paths interface for
+  automated reasoners and knowledge work by machines. ``Choose your own
+  adventure but for prompting."
+\item
+  ``Collective intelligence'' in the spirit of the ``Paradigms of
+  Intelligence'' team at
+  \href{https://www.theatlantic.com/sponsored/google/beyond-the-brain/3944/}{Google}.
+  Problems are ``solved'' by small groups or single researchers but
+  they're ability to do so is the product of collective human output.
+  {What would it look like to work with people who are not in our
+  immediate vicinity or take advantage of past knowledge in a way that
+  is just as beneficial.}
+
+  \begin{itemize}
+  \item
+    Solving ``open problems'' can be reframed as a
+    \href{https://arxiv.org/pdf/1801.02965}{cooperative search game}.
+
+    \begin{itemize}
+    \item
+      ``Cooperative search games are collective tasks where all agents
+      share the same goal of reaching a target in the shortest time
+      while limiting energy expenditure and avoiding collisions.''
+
+      \begin{itemize}
+      \tightlist
+      \item
+        ``The substance to which searchers respond acts as a memory over
+        which agents share information about the environment.
+        \textbf{The actions of writing, erasing, and forgetting are
+        equivalent to production, consumption, and degradation of
+        chemoattractant.}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\item
+  You can have
+  ``\href{https://www.theatlantic.com/sponsored/google/beyond-the-brain/3944/}{super-intelligence}''
+  by tapping into ``collective intelligence,'' just by virtue of having
+  the power of the sum. It then becomes a question of having the various
+  human inputs be as synergistic as possible, enabling coordination,
+  encouraging participation, etc.
+\end{itemize}
+
+\section{Data Visualization and Modelling as a
+test-bed}\label{data-visualization-and-modelling-as-a-test-bed}
+
+Scoping this project was important because there are many workflows to
+document. I wanted to choose to document the work of someone whose
+procedural knowledge is quite abstruse, scarce, and unexplicated, yet
+important and ubiquitous. Most knowledge workers are to some degree
+faced with the have to make sense of high-dimensional, complex data.
+Thus, here, I focus on procedural knowledge libraries for the data
+visualizer.
+
+Data visualization is a way of simplifying the data, drawing patterns,
+and then visualizing them in a way that can be understood by others.
+Still, there are many decisions that a data visualization engineer will
+make and it is unclear why they make them.
+
+For a given dataset, a visualization engineer may follow a number of
+paths, all of which are reasonable in their own ways. However, a
+consumer of a visualization often lacks the context to make sense of the
+decisions that were made during the development process. This leads to
+the interpreter taking conclusions for granted. Arguably, this is the
+root of lacking media literacy--an important problem in today's society.
+
+Here, we will try to explain why procedural knowledge in this case is
+valuable, the kinds that are valuable to capture, and how it may be
+retrieved, organized, and cataloged. I call this a library of procedural
+knowledge for the visualization engineer, and thus use this as an
+opportunity to derive a functional definition of the contemporary
+library.
+
+I try to describe the features of the data visualization engineer's
+workflow as a basis for coming up with a more extensible framework for
+procedural knowledge libraries that could work for a number of them. I
+frame the answer to these questions in terms of rough workflow sketches.
+Thus, this work also serves as the basis of conversation for what the
+ideal library for this kind of knowledge work, recognizing that there
+are many details that have been omitted out of brevity and ignorance.
+
+Data analysis is hard to ``learn.'' There's a lot of tacit knowledge and
+``intuitions'' that are built over time which makes transparency
+difficult. There's tacit judgements, exploratory detours, and aesthetic
+and communication trade-offs.
+
+There's unique features of graphical model-building: \textbf{we will
+explore how to diff non-text artifacts}; we will learn the limits of
+formalizing and abstraction.
+
+Extrapolating to anytime you want to make intermediate states explicit.
+
+For visualization methods, there's no ``absolute consistency'' for what
+is a saliency map compared to a heatmap or neural activation. Procedural
+knowledge can help us intuit what are better explanations for a given
+model. Theory-guided data science.
+
+Visualizations of learned representations or models. Visualization are
+post-hoc interpretations and we render visualization to qualitatively
+capture what models have learned.
+
+Is it possible to come up with a
+\href{https://dl.acm.org/doi/pdf/10.1145/3236386.3241340}{rigorous
+standard of correctness}?
+
+\section{Relevant}\label{relevant}
+
+Margo Seltzer
+
+New York Times R\&D
+
+Case-studies on Datawrapper, Tableau, etc.
+
+\subsection{Annotated Bib}\label{annotated-bib}
+
+\begin{itemize}
+\item
+  \href{https://mbaradad.github.io/learning_with_noise/}{Learning to See
+  by Looking at Noise}
+\item
+  \href{https://graphics.cs.wisc.edu/Papers/2016/Gle16/compjournal.pdf}{A
+  Framework for Considering Comprehensibility in Modelling}
+\item
+  In this
+  \href{https://liorpachter.wordpress.com/2024/02/26/all-of-us-failed/}{All
+  of Us failed} post (From UMAP blog posts). A grife of the author is
+  that there were no descriptions: in the Rye paper there was little
+  justification provided for the decisions that were made such as
+  picking 16 principal components or \emph{What the difference would be
+  between 20 principal components and 16}. And there is no ``general
+  analysis describing the robustness of results {[}of the{]}
+  parameter.'' The author questions why the entirety of the ``All of
+  Us'' consortium chose to use UMAP.
+\item
+  \href{UMAP\%20paper}{https://arxiv.org/pdf/1802.03426v3}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The paper mentions that ``fuzzy topological representation'' is a
+    way to ``merge the incompatible local views of the data.''
+  \end{itemize}
+\item
+  https://arxiv.org/pdf/2111.15506 (Towards a comprehensive
+  visualization of structure in data
+
+  \begin{itemize}
+  \item
+    Data transformations as described in the paper: 1) Take non-linear
+    manifold in lower-dim where a visualization would be largely
+    uninformative 2) then you take linear projections of the high-dim
+    data and make it human-readable (2 or 3-d)
+  \item
+    The problem is with \textbf{non-linear methods} which are
+    computationally complex and less deterministic (?). Examples of such
+    methods include t-SNE and UMAP.
+  \item
+    They address this with (standardized?) parametric configs? They
+    claim this would be generalizable to other non-linear methods.
+  \item
+    There's commonly trade-offs with capturing global structure compared
+    to local structure. They propose a ``retrieval information
+    approach'' where's the neighbour retriever visualizer (NeRV) that
+    looks at the cost of precision relative to recall. They do this in
+    terms of retrieving/missing neighbors in the high-dim representation
+    and the low-dim representation.
+  \item
+    You're also trading off speed compared to accuracy.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      I assume the premise is that \textbf{chunking, discreteness, and
+      cleaner parameters} translate into better queries compared to more
+      continuous data.
+    \end{itemize}
+  \end{itemize}
+\item
+  https://www.pnas.org/doi/epdf/10.1073/pnas.95.25.14863)
+\item
+  https://alarmingdevelopment.org/?p=1570
+\item
+  https://www.tableau.com/sites/default/files/2023-01/2008-GraphicalHistories-InfoVis.pdf
+  Graphical Histories for Visualization: Supporting Analysis,
+  Communication, and Evaluation (2008)
+\item
+  https://link.springer.com/article/10.1186/1471-2288-10-14
+  (Understanding human functioning using graphical models)
+\end{itemize}
+
+\section{Why a library of (tacit) knowledge is valuable for the model
+developer}\label{why-a-library-of-tacit-knowledge-is-valuable-for-the-model-developer}
+
+It seems odd that you can't get a snapshot of the entire state of your
+model as time goes on.
+
+For typed models, you have the equational representation and the
+diagrammatic representation.
+
+We want to assess the relationships between different variables and then
+manipulate our graphs to help us best understand what those
+relationships are.
+
+With Datawrapper you can link ``live'' datasets and it would be useful
+to see how the graphs change in relaton to changes in the dataset.
+
+\href{https://nytlabs.com/projects/chronicle.html}{This} NYT project
+looked at changes in language use in different articles over time. There
+are semantic tags for the words that appear the most frequently.
+
+\section{Kinds of Procedural Knowledge to
+Capture}\label{kinds-of-procedural-knowledge-to-capture}
+
+\begin{itemize}
+\item
+  Making sense of the dataset (i.e.~whether it is tabular, etc.)
+  Modifying the dataset based on the features that wll be abstracted
+  (coming up with columns, etc.).
+\item
+  Establishing a relation to try and synthesize a graphical design.
+  Making sense of structural properties (with the domain sets) ``and
+  their
+  \href{https://dl.acm.org/doi/pdf/10.1145/22949.22950?curius=2438}{functional
+  relationships}.''
+\item
+  Explaining why a data instance is anomalous. Explaining why an
+  instance was an anomalous and defining the anomaly
+  itself.https://dl.acm.org/doi/10.1145/3609333 (this work mentions
+  visual models for anamoly detection)
+\item
+  the assumptions
+\item
+  Choosing the features to focus on for the lower-dim representation of
+  the dataset.
+\item
+  Assuming some pattern
+\item
+  Trying to validate the pattern
+\item
+  Iterating, debugging the visual representation
+\end{itemize}
+
+\section{Benefits}\label{benefits}
+
+\begin{itemize}
+\tightlist
+\item
+  Explainability (understanding how the fnal visual came-to-be)
+\end{itemize}
+
+\section{Analogies and Relevant
+Concepts}\label{analogies-and-relevant-concepts}
+
+\begin{itemize}
+\item
+  Cognitive trails (temporal qualities, defining ``memories'' in the
+  space of your memory)
+
+  \begin{itemize}
+  \item
+    There's causal links, conditional branches and attentional focus.
+    \textbf{There's temporal sequences of thought. Showing the different
+    \emph{considerations} and when they arise, the different , and try
+    to explicate many implicit processes.}
+  \item
+    you reason about how ``understanding of a domain manifests in an
+    agent's behavior'' (RL-related, behavioral psychology, markovian
+    game theory, etc.)
+  \item
+    ``having understandable \textbf{stories} of reasoning''
+  \end{itemize}
+
+  \begin{itemize}
+  \item
+    How do you convert understanding Newton's laws of motion to
+    calculating a projectile (Claude-generated example)
+  \item
+    Tool selection (i.e.~picking the right statistical theory based on
+    understanding of probability theory (Claude-generated).
+  \item
+    condition-action
+  \end{itemize}
+\item
+  What do CRDT logs look like?
+
+  \begin{itemize}
+  \item
+    How do states relate over time?
+  \item
+    \textbf{\emph{Can you reconstruct a reasoning process from CRDT
+    logs?}}
+
+    \begin{itemize}
+    \item
+      CRDTs don't keep a full operational log. They only store the
+      current state. Logs (for auditing, provenance, replay) then you
+      can have operational logs manually made or through a layered
+      system.
+
+      \begin{itemize}
+      \item
+        having a directed versus undirected graph
+      \item
+        JSON patches
+      \item
+        Track the intent and target of every change
+      \item
+        you can replay them in any order (but how does work when
+        decisions only make sense in certain/a given sequence(s))
+      \item
+        here is where branching timelines could fit in
+      \end{itemize}
+
+      \begin{itemize}
+      \item
+        *ChatGPT says: ``This preserves the integrity of insight while
+        still getting the power of distributed sync."
+      \item
+        \textbf{CRDTs are built to ensure convergence; but you can
+        add-on a ``procedural layer'' for the sake of interpretablity.}
+      \end{itemize}
+    \end{itemize}
+  \item
+    Synthesis (\href{https://core.ac.uk/download/pdf/29195125.pdf}{of
+    visual environments})
+  \end{itemize}
+\item
+  Coresets
+
+  \begin{itemize}
+  \item
+    Partitioning datasets that upon reconstruction preserve all the
+    properties of the full dataset.
+  \item
+    It's partitioned to speed up computations, making approximations
+    faster (e.g.~clustering, regression), and ``compressing'' procedural
+    and data-intensive pipelines.
+  \item
+    The structure is a weighted subset for a given objective function.
+  \item
+    With each small subset of data you have the key properties of the
+    transformed dataset . The coreset s ``stored'' with the step where
+    it was computed (\textbf{linked list and indexing})
+  \item
+    The goal is to have a \textbf{\emph{`}'miniature, audit-ready trace}
+  \item
+    Ordered, annotated log as a form of ``narrative layer''
+
+    \begin{itemize}
+    \tightlist
+    \item
+      You can have human + machine annotations versus. algorithmically
+      derived narrative layers
+    \end{itemize}
+  \end{itemize}
+\item
+  Record linkage
+\end{itemize}
+
+\section{Case-studies}\label{case-studies}
+
+\section{Version Control}\label{version-control}
+
+Meaningful diffs when you're working in different languages.
+
+JS is both more imperative and un-typed. How do you retrieve the goals
+of different states when you're using these languages? This is compared
+to when I use SQL and I have clear explications of my goals and then if
+I migrate and there's an error then I can infer that the next steps are
+bug-fixing.
+
+
+
+
+\end{document}

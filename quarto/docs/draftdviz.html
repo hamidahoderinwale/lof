@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="keywords" content="procedural knowledge, data visualization, metadata, knowledge management">
+
+<title>Procedural Knowledge Libraries for Data Visualization Engineers – Loaf</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a804b358defe67bda3b29790721414d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Loaf</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./pkl_outline.html"> 
+<span class="menu-text">Project Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./draftdviz.html" aria-current="page"> 
+<span class="menu-text">Draft</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#status-quo" id="toc-status-quo" class="nav-link" data-scroll-target="#status-quo"><span class="header-section-number">2</span> Status quo</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">3</span> Overview</a></li>
+  <li><a href="#how-to-read-this-work.-listing-the-organization-of-the-paper." id="toc-how-to-read-this-work.-listing-the-organization-of-the-paper." class="nav-link" data-scroll-target="#how-to-read-this-work.-listing-the-organization-of-the-paper."><span class="header-section-number">4</span> How to read this work. Listing the organization of the paper.</a></li>
+  <li><a href="#structure-and-points" id="toc-structure-and-points" class="nav-link" data-scroll-target="#structure-and-points"><span class="header-section-number">5</span> Structure and points</a></li>
+  <li><a href="#motivations-real-world-applications" id="toc-motivations-real-world-applications" class="nav-link" data-scroll-target="#motivations-real-world-applications"><span class="header-section-number">6</span> Motivations &amp; Real-World applications</a></li>
+  <li><a href="#data-visualization-and-modelling-as-a-test-bed" id="toc-data-visualization-and-modelling-as-a-test-bed" class="nav-link" data-scroll-target="#data-visualization-and-modelling-as-a-test-bed"><span class="header-section-number">7</span> Data Visualization and Modelling as a test-bed</a></li>
+  <li><a href="#relevant" id="toc-relevant" class="nav-link" data-scroll-target="#relevant"><span class="header-section-number">8</span> Relevant</a>
+  <ul class="collapse">
+  <li><a href="#annotated-bib" id="toc-annotated-bib" class="nav-link" data-scroll-target="#annotated-bib"><span class="header-section-number">8.1</span> Annotated Bib</a></li>
+  </ul></li>
+  <li><a href="#why-a-library-of-tacit-knowledge-is-valuable-for-the-model-developer" id="toc-why-a-library-of-tacit-knowledge-is-valuable-for-the-model-developer" class="nav-link" data-scroll-target="#why-a-library-of-tacit-knowledge-is-valuable-for-the-model-developer"><span class="header-section-number">9</span> Why a library of (tacit) knowledge is valuable for the model developer</a></li>
+  <li><a href="#kinds-of-procedural-knowledge-to-capture" id="toc-kinds-of-procedural-knowledge-to-capture" class="nav-link" data-scroll-target="#kinds-of-procedural-knowledge-to-capture"><span class="header-section-number">10</span> Kinds of Procedural Knowledge to Capture</a></li>
+  <li><a href="#benefits" id="toc-benefits" class="nav-link" data-scroll-target="#benefits"><span class="header-section-number">11</span> Benefits</a></li>
+  <li><a href="#analogies-and-relevant-concepts" id="toc-analogies-and-relevant-concepts" class="nav-link" data-scroll-target="#analogies-and-relevant-concepts"><span class="header-section-number">12</span> Analogies and Relevant Concepts</a></li>
+  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">13</span> Case-studies</a></li>
+  <li><a href="#version-control" id="toc-version-control" class="nav-link" data-scroll-target="#version-control"><span class="header-section-number">14</span> Version Control</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="draftdviz.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Procedural Knowledge Libraries for Data Visualization Engineers</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This work explores the concept of procedural knowledge libraries tailored for data visualization engineers. It discusses the dynamic nature of such libraries, the importance of capturing procedural metadata, and the implications for knowledge preservation and retrieval. The paper also examines existing tools and methodologies, highlighting their limitations and proposing a framework for more effective procedural knowledge management.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>procedural knowledge, data visualization, metadata, knowledge management</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>Initially, this centered around procedural knowledge as a whole entity and now it’s information about the process of building new knowledge itself. Explicating these processes makes it possible to audit [human/machine] reasoners. You can imagine having repos of procedural knowledge for those analyzing (building models of) the same dataset. This framework would then make it possible to assess the mechanistic differences between their approaches, clearly defining the branches of thought that took place.</p>
+<p>The important distinction to make here is that libraries are systems; they are dynamic, as the contents within them are living. To date, traditional “libraries” have assumed otherwise. Furthermore, the objects inside them are defined as an artifact of knowledge. That is, artifacts that are the product of thought and developed with a goal in mind. The function of the system is then to be a home to these artifacts and preserve them for prosperity’s sake, but more importantly for retrieval’s sake. As such, while the integrity of the work should be preserved, there are ways to build the system and store the objects such that this can be done.</p>
+<p>Provenance refers to the lineage of an object. Provenance, synonymous with metadata, has been developed with the static knowledge artifact in mind, so extending upon it for the sake of the dynamic artifact is key for a “new age of libraries.”</p>
+<p>Now, we are faced with the question of what it means to develop new knowledge. That is, what is something tractable than we can anchor to, to help build better libraries: libraries that work for knowledge that evolves over time. I use the instance of model-building. While there’s no dedicated library to models, they exist within research papers, repositories, and notebooks. Here, I outline the ways that we can capture how they are developed (e.g.&nbsp;improved version control, collaboratively, integrating “layered context architecture”), what they mean (i.e.&nbsp;to help people find exactly what they need by explicating what models and their requests mean), what it looks like to retrieve them (the ideal interface to help people search in accordance with their preferences), etc. And then I consider how they may fit into a larger system: how they may be cataloged, organized (e.g., the metadata that can be assigned to them, scalable metadata attribution, etc.), and stored (e.g.&nbsp;internet search engine that works for “findings.”).</p>
+<p>Here, we focus on the model-builder who is building graphical models or visualizations. Visualization is often the last step in conveying insight and analysis of data that has been obtained through the research process. Therefore, within this test-bed, we lay out a framework and suggest the limitations and trade-offs in real-world application (i.e. Log-based CRDTs being computationally expensive than traditional CRDTS), concluding with discussion on promising speculative and existing areas of work to address them.</p>
+<!-- # Give a sketch of the value -->
+</section>
+<section id="status-quo" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Status quo</h1>
+<ul>
+<li>File versioning where you decide what’s a version. For example, naming versions of a project <a href="https://researchdata.wisc.edu/news/version-control-for-research-projects/">as</a> “v1, v2, v3.” Most document libraries have some version of crude file records. <a href="https://arxiv.org/">arXiv</a>, the preprint repository will keep versions of a paper as they’re re-uploaded with edits from the authors. Google Scholar indexes the versions of a paper and will link it to the same citation.</li>
+<li>Versioning with a Distributed Version Control System (DVCS) such as Git where you have logs of your past commits (that make your versions) and cloud DVCS where you’re able to collaborate with others. Here, there’s not only versions pertinent to the changes that you make, but the changes that other people make to your instance of the project, forked versions of your project, and the changes that their collaborators make to those instances.</li>
+<li>There’s a number of domain-specific projects and tools, such as <a href="https://codalab.org/">CodaLab</a> where machine learning researchers can host and run their experiments (reproducible) and share their papers in executable form as worksheets.</li>
+<li>For visualization workflows–the primary application of this project–there’s <a href="https://www.vistrails.org//index.php/Main_Page">VisTrails</a>, a provenance tracker for visualizations where data is stored in XML files. With it, users can query workflows, as the system tracks decisions and data products to help answer the actions that led to a result. It’s core focus is reproducibility. It’s mainly developed for Python and Python-based visualization libraries.</li>
+</ul>
+<p><a href="https://www.perplexity.ai/search/overview-of-viztrails-fCsottRfQR6P0aoMyMLVZg">Perplexity trail</a> (could VizTrail work for a UMAP model and viz? What are its capabilities?)</p>
+</section>
+<section id="overview" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Overview</h1>
+<ul>
+<li><p>Broadening the scope of the library</p>
+<ul>
+<li><p>Procedural knowledge libraries are living and they’re archives of “dynamic” reasoning.</p></li>
+<li><p>There should not be a distinction because even static artifacts take time to make and evolve over time. <span style="color: violet">Even if we have static artifacts our archives should be dynamic to account for development.</span></p></li>
+<li><p>Preserving the right to “priviledged information.”</p></li>
+<li><p>Trails are now included in the corpus of knowledge and librarians should be able to navigate them and they should be included in the set of things that we want to query to answer the questions that we pose. In other words, including the drafted states means you can have “end-to-end” libraries: libraries of reasoning and libraries of artifacts.</p></li>
+<li><p>This won’t come without intervention, but then how do you translate the “what” and “how” of development into the “why?" Next, why does it matter if you can do that?</p></li>
+<li><p>Barriers to tracking history</p>
+<ul>
+<li><p>Problems with CRDTs</p>
+<ul>
+<li><p>Eg-walker algorithm as alternative: https://arxiv.org/pdf/2409.14252 (allows for fine-grained editing history, mentioned the promise in being extended to rich-text, graphics, and other applications; HN thread suggests that this would need an additoinal CRDT implemented for rich-test)</p></li>
+<li><p>(From thread) might be fruitful to look at what exists for photoshop and similar software: where layers can cam be inserted/deleted and as a result the index of following items update. And then there’s a question of how layer re-orders would work. (a set of operations, even graph where each event corresponds to an operation, replay, apply/retreat/advance methods for eddicient replay)</p></li>
+<li><p>If you have an advanced CRDT say XCRDT which represents the internal structure in your work then there are way ways to combine the original operations with the CRDT operations.</p></li>
+</ul></li>
+<li><p>The non-linearity of history (Log-based CRDTs: https://sites.cs.ucsb.edu/&nbsp;ckrintz/papers/ic2e22.pdf)</p></li>
+<li><p>Format / interoperabilityof historical data</p></li>
+<li><p>Key parameters of queries/history/metadata</p></li>
+</ul>
+<!-- -->
+<ul>
+<li>This is useful because you can distinguish goals and deviate from these goals (set out by others or your past self) in pointed, clear ways.</li>
+</ul></li>
+</ul></li>
+<li><p>The implications of broadening the scope:</p>
+<ul>
+<li><p>It takes more to train to become a librarian. The scope of the librarian also evolves. The librarian is always the human but machines can be tools to help us become better ones (work faster, distributively, and more effectively)</p></li>
+<li><p>Engineering and research questions that stem from this, especially on the implementation side.</p></li>
+<li><p>The different layers of context: action-layer, procedural-layer, narrative-layer, object/output-layer (reconstructing by laying these on top of each other and have them span the space of time in the horizontal direction) –&gt; assuming this takes the form of a database</p>
+<ul>
+<li><p>From CGPT: “You have 4-D GithHub (model = code (action) + reason/method/strategy (procedural intent, step in readable language, what someone else could theoretically carry out) + interpretation (why the action was done, what outcome was inferred from the reason for the code, reason for the strategy)compared to 2-D GitHub (action (what was done) + object (the output))”</p>
+<ul>
+<li><p>4-D (new): Model = Action + Rationale + Interpretation + Object</p></li>
+<li><p>2-D (old): Model = Action + Object</p></li>
+<li><p><strong>Reconstructing narratives from the procedural information: turning procedural information into knowledge</strong></p></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="how-to-read-this-work.-listing-the-organization-of-the-paper." class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> How to read this work. Listing the organization of the paper.</h1>
+</section>
+<section id="structure-and-points" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Structure and points</h1>
+<ul>
+<li><p>Redefine what is a library in terms of its function and its form</p>
+<ul>
+<li>This assumes that there’s some core, instrinsic properties that make it a library and the rest of the variables we can play with according to what’s nee</li>
+</ul></li>
+<li><p>There’s a gap in the way that we currently store knowledge</p>
+<ul>
+<li>What provenance do we already <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=7192714">capture</a>?</li>
+</ul></li>
+<li><p>How we manage information might matter more than just the sheer amount of knowledge that we have</p></li>
+<li><p>Procedural knowledge is the one we try the least to preserve but it holds a wealth of insight</p></li>
+<li><p>How do you interact with this kind of procedural knowledge as a librarian?</p>
+<ul>
+<li>That is, how do you query and what does retrieval look like? (This seems unexplored).</li>
+</ul>
+<p><span style="color: violet">Trying to quantify the current (tacit) knowledge loss when you don’t log</span></p></li>
+</ul>
+</section>
+<section id="motivations-real-world-applications" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Motivations &amp; Real-World applications</h1>
+<ul>
+<li><p>More than just capturing procedural knowledge how do you make it operational.</p></li>
+<li><p>Being able to have ``structured procedural metadata’’ for search in internet research libraries. For example, you could have methodology-based queries. For a tool like Elicit, it would be possible to search for papers that use specific methods, had margins or metric results within these ranges, and so on: this would make it easier to conduct meta-analyses.</p></li>
+<li><p>Being able to abstract away the implementation completely and pick between different workflows on the output-layer.</p></li>
+<li><p>Procedural knowledge libraries are effectively tutorials–they allow people to do the things you’ve done beyond authentication.</p></li>
+<li><p>We can get better understandings of systems and do summary statistics and make opinions and judgements about the world.</p></li>
+<li><p>Help interpreters understand how the “formalism” and/or “representation” disagrees with reality. And being able to assert this at a more granular, generalizable angle. Models are not objectively worse than each other (for the most part) but they do carry different goals and assumptions and it’s useful to make that clear.</p></li>
+<li><p>Increased use of “unsupervised methods.” This <a href="https://arxiv.org/pdf/2111.15506">paper</a> mentions “unsupervised explanatory steps; others off-load the analysis to an unsupervised model (e.g.&nbsp;Unsupervised Dimensionality Component Analysis).</p></li>
+<li><p>The Colab Data Science Agent isn’t very good. There isn’t training data for this kind of work.</p></li>
+<li><p>There’s Julius AI, Tableau, Causal (Taimur), etc.</p></li>
+<li><p>There’s no data analysis reasoning examples that would help them express the different choices that they went down.</p></li>
+<li><p>What would it look like to have branching paths interface for automated reasoners and knowledge work by machines. “Choose your own adventure but for prompting."</p></li>
+<li><p>“Collective intelligence” in the spirit of the “Paradigms of Intelligence” team at <a href="https://www.theatlantic.com/sponsored/google/beyond-the-brain/3944/">Google</a>. Problems are “solved” by small groups or single researchers but they’re ability to do so is the product of collective human output. <span style="color: violet">What would it look like to work with people who are not in our immediate vicinity or take advantage of past knowledge in a way that is just as beneficial.</span></p>
+<ul>
+<li><p>Solving “open problems” can be reframed as a <a href="https://arxiv.org/pdf/1801.02965">cooperative search game</a>.</p>
+<ul>
+<li><p>“Cooperative search games are collective tasks where all agents share the same goal of reaching a target in the shortest time while limiting energy expenditure and avoiding collisions.”</p>
+<ul>
+<li>“The substance to which searchers respond acts as a memory over which agents share information about the environment. <strong>The actions of writing, erasing, and forgetting are equivalent to production, consumption, and degradation of chemoattractant.</strong></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>You can have “<a href="https://www.theatlantic.com/sponsored/google/beyond-the-brain/3944/">super-intelligence</a>” by tapping into “collective intelligence,” just by virtue of having the power of the sum. It then becomes a question of having the various human inputs be as synergistic as possible, enabling coordination, encouraging participation, etc.</p></li>
+</ul>
+</section>
+<section id="data-visualization-and-modelling-as-a-test-bed" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Data Visualization and Modelling as a test-bed</h1>
+<p>Scoping this project was important because there are many workflows to document. I wanted to choose to document the work of someone whose procedural knowledge is quite abstruse, scarce, and unexplicated, yet important and ubiquitous. Most knowledge workers are to some degree faced with the have to make sense of high-dimensional, complex data. Thus, here, I focus on procedural knowledge libraries for the data visualizer.</p>
+<p>Data visualization is a way of simplifying the data, drawing patterns, and then visualizing them in a way that can be understood by others. Still, there are many decisions that a data visualization engineer will make and it is unclear why they make them.</p>
+<p>For a given dataset, a visualization engineer may follow a number of paths, all of which are reasonable in their own ways. However, a consumer of a visualization often lacks the context to make sense of the decisions that were made during the development process. This leads to the interpreter taking conclusions for granted. Arguably, this is the root of lacking media literacy–an important problem in today’s society.</p>
+<p>Here, we will try to explain why procedural knowledge in this case is valuable, the kinds that are valuable to capture, and how it may be retrieved, organized, and cataloged. I call this a library of procedural knowledge for the visualization engineer, and thus use this as an opportunity to derive a functional definition of the contemporary library.</p>
+<p>I try to describe the features of the data visualization engineer’s workflow as a basis for coming up with a more extensible framework for procedural knowledge libraries that could work for a number of them. I frame the answer to these questions in terms of rough workflow sketches. Thus, this work also serves as the basis of conversation for what the ideal library for this kind of knowledge work, recognizing that there are many details that have been omitted out of brevity and ignorance.</p>
+<p>Data analysis is hard to “learn.” There’s a lot of tacit knowledge and “intuitions” that are built over time which makes transparency difficult. There’s tacit judgements, exploratory detours, and aesthetic and communication trade-offs.</p>
+<p>There’s unique features of graphical model-building: <strong>we will explore how to diff non-text artifacts</strong>; we will learn the limits of formalizing and abstraction.</p>
+<p>Extrapolating to anytime you want to make intermediate states explicit.</p>
+<p>For visualization methods, there’s no “absolute consistency” for what is a saliency map compared to a heatmap or neural activation. Procedural knowledge can help us intuit what are better explanations for a given model. Theory-guided data science.</p>
+<p>Visualizations of learned representations or models. Visualization are post-hoc interpretations and we render visualization to qualitatively capture what models have learned.</p>
+<p>Is it possible to come up with a <a href="https://dl.acm.org/doi/pdf/10.1145/3236386.3241340">rigorous standard of correctness</a>?</p>
+</section>
+<section id="relevant" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Relevant</h1>
+<p>Margo Seltzer</p>
+<p>New York Times R&amp;D</p>
+<p>Case-studies on Datawrapper, Tableau, etc.</p>
+<section id="annotated-bib" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="annotated-bib"><span class="header-section-number">8.1</span> Annotated Bib</h2>
+<ul>
+<li><p><a href="https://mbaradad.github.io/learning_with_noise/">Learning to See by Looking at Noise</a></p></li>
+<li><p><a href="https://graphics.cs.wisc.edu/Papers/2016/Gle16/compjournal.pdf">A Framework for Considering Comprehensibility in Modelling</a></p></li>
+<li><p>In this <a href="https://liorpachter.wordpress.com/2024/02/26/all-of-us-failed/">All of Us failed</a> post (From UMAP blog posts). A grife of the author is that there were no descriptions: in the Rye paper there was little justification provided for the decisions that were made such as picking 16 principal components or <em>What the difference would be between 20 principal components and 16</em>. And there is no “general analysis describing the robustness of results [of the] parameter.” The author questions why the entirety of the “All of Us” consortium chose to use UMAP.</p></li>
+<li><p><a href="UMAP paper">https://arxiv.org/pdf/1802.03426v3</a></p>
+<ul>
+<li>The paper mentions that “fuzzy topological representation” is a way to “merge the incompatible local views of the data.”</li>
+</ul></li>
+<li><p>https://arxiv.org/pdf/2111.15506 (Towards a comprehensive visualization of structure in data</p>
+<ul>
+<li><p>Data transformations as described in the paper: 1) Take non-linear manifold in lower-dim where a visualization would be largely uninformative 2) then you take linear projections of the high-dim data and make it human-readable (2 or 3-d)</p></li>
+<li><p>The problem is with <strong>non-linear methods</strong> which are computationally complex and less deterministic (?). Examples of such methods include t-SNE and UMAP.</p></li>
+<li><p>They address this with (standardized?) parametric configs? They claim this would be generalizable to other non-linear methods.</p></li>
+<li><p>There’s commonly trade-offs with capturing global structure compared to local structure. They propose a “retrieval information approach” where’s the neighbour retriever visualizer (NeRV) that looks at the cost of precision relative to recall. They do this in terms of retrieving/missing neighbors in the high-dim representation and the low-dim representation.</p></li>
+<li><p>You’re also trading off speed compared to accuracy.</p>
+<ul>
+<li>I assume the premise is that <strong>chunking, discreteness, and cleaner parameters</strong> translate into better queries compared to more continuous data.</li>
+</ul></li>
+</ul></li>
+<li><p>https://www.pnas.org/doi/epdf/10.1073/pnas.95.25.14863)</p></li>
+<li><p>https://alarmingdevelopment.org/?p=1570</p></li>
+<li><p>https://www.tableau.com/sites/default/files/2023-01/2008-GraphicalHistories-InfoVis.pdf Graphical Histories for Visualization: Supporting Analysis, Communication, and Evaluation (2008)</p></li>
+<li><p>https://link.springer.com/article/10.1186/1471-2288-10-14 (Understanding human functioning using graphical models)</p></li>
+</ul>
+</section>
+</section>
+<section id="why-a-library-of-tacit-knowledge-is-valuable-for-the-model-developer" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Why a library of (tacit) knowledge is valuable for the model developer</h1>
+<p>It seems odd that you can’t get a snapshot of the entire state of your model as time goes on.</p>
+<p>For typed models, you have the equational representation and the diagrammatic representation.</p>
+<p>We want to assess the relationships between different variables and then manipulate our graphs to help us best understand what those relationships are.</p>
+<p>With Datawrapper you can link “live” datasets and it would be useful to see how the graphs change in relaton to changes in the dataset.</p>
+<p><a href="https://nytlabs.com/projects/chronicle.html">This</a> NYT project looked at changes in language use in different articles over time. There are semantic tags for the words that appear the most frequently.</p>
+</section>
+<section id="kinds-of-procedural-knowledge-to-capture" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Kinds of Procedural Knowledge to Capture</h1>
+<ul>
+<li><p>Making sense of the dataset (i.e.&nbsp;whether it is tabular, etc.) Modifying the dataset based on the features that wll be abstracted (coming up with columns, etc.).</p></li>
+<li><p>Establishing a relation to try and synthesize a graphical design. Making sense of structural properties (with the domain sets) “and their <a href="https://dl.acm.org/doi/pdf/10.1145/22949.22950?curius=2438">functional relationships</a>.”</p></li>
+<li><p>Explaining why a data instance is anomalous. Explaining why an instance was an anomalous and defining the anomaly itself.https://dl.acm.org/doi/10.1145/3609333 (this work mentions visual models for anamoly detection)</p></li>
+<li><p>the assumptions</p></li>
+<li><p>Choosing the features to focus on for the lower-dim representation of the dataset.</p></li>
+<li><p>Assuming some pattern</p></li>
+<li><p>Trying to validate the pattern</p></li>
+<li><p>Iterating, debugging the visual representation</p></li>
+</ul>
+</section>
+<section id="benefits" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Benefits</h1>
+<ul>
+<li>Explainability (understanding how the fnal visual came-to-be)</li>
+</ul>
+</section>
+<section id="analogies-and-relevant-concepts" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Analogies and Relevant Concepts</h1>
+<ul>
+<li><p>Cognitive trails (temporal qualities, defining “memories” in the space of your memory)</p>
+<ul>
+<li><p>There’s causal links, conditional branches and attentional focus. <strong>There’s temporal sequences of thought. Showing the different <em>considerations</em> and when they arise, the different , and try to explicate many implicit processes.</strong></p></li>
+<li><p>you reason about how “understanding of a domain manifests in an agent’s behavior” (RL-related, behavioral psychology, markovian game theory, etc.)</p></li>
+<li><p>“having understandable <strong>stories</strong> of reasoning”</p></li>
+</ul>
+<!-- -->
+<ul>
+<li><p>How do you convert understanding Newton’s laws of motion to calculating a projectile (Claude-generated example)</p></li>
+<li><p>Tool selection (i.e.&nbsp;picking the right statistical theory based on understanding of probability theory (Claude-generated).</p></li>
+<li><p>condition-action</p></li>
+</ul></li>
+<li><p>What do CRDT logs look like?</p>
+<ul>
+<li><p>How do states relate over time?</p></li>
+<li><p><strong><em>Can you reconstruct a reasoning process from CRDT logs?</em></strong></p>
+<ul>
+<li><p>CRDTs don’t keep a full operational log. They only store the current state. Logs (for auditing, provenance, replay) then you can have operational logs manually made or through a layered system.</p>
+<ul>
+<li><p>having a directed versus undirected graph</p></li>
+<li><p>JSON patches</p></li>
+<li><p>Track the intent and target of every change</p></li>
+<li><p>you can replay them in any order (but how does work when decisions only make sense in certain/a given sequence(s))</p></li>
+<li><p>here is where branching timelines could fit in</p></li>
+</ul>
+<!-- -->
+<ul>
+<li><p>*ChatGPT says: “This preserves the integrity of insight while still getting the power of distributed sync."</p></li>
+<li><p><strong>CRDTs are built to ensure convergence; but you can add-on a “procedural layer” for the sake of interpretablity.</strong></p></li>
+</ul></li>
+</ul></li>
+<li><p>Synthesis (<a href="https://core.ac.uk/download/pdf/29195125.pdf">of visual environments</a>)</p></li>
+</ul></li>
+<li><p>Coresets</p>
+<ul>
+<li><p>Partitioning datasets that upon reconstruction preserve all the properties of the full dataset.</p></li>
+<li><p>It’s partitioned to speed up computations, making approximations faster (e.g.&nbsp;clustering, regression), and “compressing” procedural and data-intensive pipelines.</p></li>
+<li><p>The structure is a weighted subset for a given objective function.</p></li>
+<li><p>With each small subset of data you have the key properties of the transformed dataset . The coreset s “stored” with the step where it was computed (<strong>linked list and indexing</strong>)</p></li>
+<li><p>The goal is to have a <strong><em>`</em>’miniature, audit-ready trace</strong></p></li>
+<li><p>Ordered, annotated log as a form of “narrative layer”</p>
+<ul>
+<li>You can have human + machine annotations versus. algorithmically derived narrative layers</li>
+</ul></li>
+</ul></li>
+<li><p>Record linkage</p></li>
+</ul>
+</section>
+<section id="case-studies" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Case-studies</h1>
+</section>
+<section id="version-control" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Version Control</h1>
+<p>Meaningful diffs when you’re working in different languages.</p>
+<p>JS is both more imperative and un-typed. How do you retrieve the goals of different states when you’re using these languages? This is compared to when I use SQL and I have clear explications of my goals and then if I migrate and there’s an error then I can infer that the next steps are bug-fixing.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{2025,
+  author = {},
+  title = {Procedural {Knowledge} {Libraries} for {Data} {Visualization}
+    {Engineers}},
+  volume = {10},
+  number = {2},
+  date = {2025-04},
+  url = {https://hamidah.quarto.pub/loaf/draftdviz.html},
+  doi = {10.xxxx/xxxxx},
+  langid = {en},
+  abstract = {This work explores the concept of procedural knowledge
+    libraries tailored for data visualization engineers. It discusses
+    the dynamic nature of such libraries, the importance of capturing
+    procedural metadata, and the implications for knowledge preservation
+    and retrieval. The paper also examines existing tools and
+    methodologies, highlighting their limitations and proposing a
+    framework for more effective procedural knowledge management.}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+<span>“Procedural Knowledge Libraries for Data Visualization
+Engineers.”</span> 2025. Journal of Data Visualization. April 2025. <a href="https://doi.org/10.xxxx/xxxxx">https://doi.org/10.xxxx/xxxxx</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/hamidah\.quarto\.pub\/loaf");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

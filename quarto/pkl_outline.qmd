@@ -1,0 +1,185 @@
+# Introduction
+
+This research will apply the concept of the procedural knowledge library
+to the process of knowledge production itself.
+
+A library is a curated, organized collection of ideas, concepts, and
+facts, transformed into structured representations that users can
+access, interpret, and understand. It bridges raw information and human
+knowledge, providing tools to make meaning accessible. Libraries take
+many forms, as information can be encoded in text, sound, images, data,
+and more.
+
+While traditional libraries rely on static representations (e.g.,
+printed books, fixed records), information is inherently dynamic. Today,
+we can also represent information dynamically---through interactive
+media, real-time data, and evolving digital archives. Libraries must
+adapt to these forms. Here, I focus on the digital medium and the
+dynamic artifacts it produces, such as the programs that live in
+repositories.
+
+## Preserving the model-development process
+
+I envision that the core tenet of modern knowledge work will be
+model-building---finding the right representations of our goals,
+specifying them, and iteratively refining them over time. Furthermore,
+with AI, traditionally imperative workflows will shift toward a more
+declarative paradigm: users will define their goals rather than
+specifying the steps required to achieve them.
+
+In short, we have a significant opportunity to improve insight
+generation by using procedural knowledge capture to document how models
+are built and how they evolve over time.
+
+# Project Overview
+
+This work is divided into two interconnected projects:
+
+1.  A **conceptual framework** for procedural knowledge libraries, which
+    defines their core functions, challenges, and potential
+    applications. In this work, I specifically want to focus on the
+    graphical model-builders' workflow as a case study. [^1]
+
+2.  A **practical implementation** using
+    [Chit](https://github.com/davidad/chit), an experimental
+    version-control system, as a test-bed to explore how such libraries
+    can handle dynamic artifacts like code-generated visualizations.
+
+## Conceptual framework
+
+::: flushleft
+The paper will include the following:
+:::
+
+## Version Control for Structured Graphical Data
+
+### Version Control Repositories as Libraries
+
+While not traditionally viewed as such, version control systems like Git
+and their logs are libraries because they organize, preserve, and
+provide access to structured knowledge---documenting code evolution,
+decisions, and project histories. These dynamic artifacts act as
+repositories, lets users to interpret, understand, and build upon the
+work of others.
+
+Visual representations reveal patterns in complex data that text alone
+cannot. Exploratory data analysis serves as a systematic method for
+sense-making through these visualizations. This project proposes insight
+provenance---capturing not just final visualizations but the journey of
+analysis that produced them. At large, I see this is a project of
+capturing the reasoning process, in this case, using visualizations to
+make sense of complex datasets.
+
+### Implementation
+
+This project extends [Chit](https://github.com/davidad/chit), an
+experimental version-control system for structured data, to declarative
+graphical languages. Presently, developers using data visualization
+tools---such as [Observable](https://observablehq.com/),
+[Hex](https://hex.tech/), and [Jupyter](https://jupyter.org/)
+notebooks---lack adequate version control systems suited for visual,
+exploratory, and iterative workflows. These workflows often involve
+open-ended methods to achieve an unstructured goal, making traditional
+file-based version control insufficient.
+
+I will apply this system to graphical representations, such as
+[Vega-Lite](https://vega.github.io/vega-lite/)--a high-level
+visualization grammar. As a library, it will incorporate version control
+to capture the process of creating and refining visualizations.
+Additionally, it will be extended to support core library functions,
+such as retrieving past history and enabling search across historical
+versions.
+
+Given Chit's experimental and early-stage nature, I plan to build my own
+understanding of its approach, extract its core principles, and develop
+a bespoke system tailored to procedural knowledge libraries. Where
+elements are retained from Chit, I will provide technical exposition to
+explain their design and rationale. [^2]
+
+While still in its early stages, Chit lays a strong foundation for the
+broader project and aligns with my vision for the library of the future:
+a system that works with dynamic artifacts---such as code-generated
+visualizations---whose context must be organized and preserved. Chit was
+originally developed to help build auditable, interpretable AI systems
+while being extensible to less-structured personal knowledge and logic
+languages (e.g., SQL).
+
+### Informing the theory
+
+This project serves as a test-bed to explore key questions that can
+inform the former:
+
+-   What trade-offs exist in designing an efficient yet expressive
+    history-tracking system?
+
+-   How can Chit handle visual representation changes, such as diffing
+    and merging Vega-Lite specifications?
+
+-   How could this extend to knowledge structures like RDF and OWL?
+
+The final work will fully explain why this specific interpretation of a
+\"procedural knowledge library\" was worth exploring. I will outline the
+attributes of this particular instance of a procedural knowledge library
+informed by the conceptual framework above. This will test the universal
+properties of a procedural knowledge library, including: the types of
+procedures it supports, their medium of representation, the features of
+the goals it targets, and the decision to extend Chit rather than
+starting from scratch.
+
+# Future Work
+
+In my foundational research agenda, I outlined a series of questions.
+Here, I list some more that may or may not become the basis of future
+projects.
+
+## Diffing ML model evolution
+
+[Model
+diffing](https://transformer-circuits.pub/2024/model-diffing/index.html)
+is a new ML interpretability technique in which LLMs are compared by
+analyzing their internal representations. We could potentially extend
+this by first having models generate graphical representations of their
+own internal structures (e.g. with
+[TensorGraph](https://github.com/hycis/TensorGraph)). Then we apply
+model diffing and structured versioning techniques to the graphical
+representations they generate.
+
+This approach could improve fine-tuning, enhance interpretability, and
+help researchers track model evolution over time. This builds on Gurnee
+and Tegmark's (2024) [work](https://arxiv.org/abs/2310.02207) finding
+that models learn linear representations of space and time.
+
+While they manually visualized these representations, we might ask
+models to programmatically generate these visualizations themselves,
+perhaps expressing their reasoning in declarative graphical languages
+such as DOT (used by Graphviz), Mermaid, TikZ, D3.js, or ONNX. For
+example, a model could output its attention patterns as a Mermaid
+diagram, or express its learned spatial representations as TikZ code
+that researchers could then visualize, analyze, and compare across model
+versions.
+
+## Model Interoperability
+
+-   How can denotational semantics---a method of mathematically
+    formalizing the meaning of programming operations---serve as a
+    common framework for managing models across different programming
+    languages?
+
+-   How can we combine declarative programming paradigms with
+    denotational techniques to better capture developer intentions?
+
+-   What formal methods could be developed to 'diff' the semantic
+    meaning and goals of code as it evolves over time, going beyond just
+    analyzing syntactic changes?
+
+-   Additionally, how can we enable reasoning about systems that mix
+    formal, semi-formal, and informal representations?
+
+[^1]: Inspired by survey papers from ACM Transactions on Knowledge
+    Discovery from Data:
+    [1](https://dl.acm.org/doi/pdf/10.1145/3363574#page=6.82),
+    [2](https://dl.acm.org/doi/pdf/10.1145/3447822).
+
+[^2]: For an example of a theory-driven implementation paper, see
+    *Designing Datalog-Based Embedded Languages* at
+    [arXiv:2305.14773](https://arxiv.org/abs/2305.14773).

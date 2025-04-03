@@ -1,0 +1,13 @@
+project:
+  type: website
+  title: "Procedural Knowledge Libraries"
+  output-dir: docs
+
+website:
+  title: "Loaf"
+  navbar:
+    left:
+      - href: pkl_outline.qmd
+        text: Project Overview 
+      - href: draftdviz.qmd 
+        text: Draft
