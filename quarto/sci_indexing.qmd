@@ -21,3 +21,9 @@ Novel contributions: In the rigorous, quantitative estimate of an implemented fr
 
 ## Auxiliary
 - Some issues like if you web scrapers that surpass paywalls then the scientists don’t get paid (but that never really mattered: could run an experiment and see if that’s possible -- jailbreaking)
+
+## Bibliography 
+- [OpenReview Paper](https://openreview.net/pdf?id=YktwH3tOuc)  
+- [The Gradient: Text Embedding Inversion](https://thegradient.pub/text-embedding-inversion/)  
+- [arXiv: Copyrights and Licenses for Academic Works](https://arxiv.org/abs/2310.06816)  
+- [arXiv: Foundational Research Paper](https://arxiv.org/abs/2002.10689)  
