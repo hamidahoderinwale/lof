@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pkl_outline – Loaf</title>
+<title>sci_indexing – Loaf</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./pkl_outline.html" aria-current="page"> 
+    <a class="nav-link" href="./pkl_outline.html"> 
 <span class="menu-text">Project Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -96,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Data Viz Version Control Draft</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./sci_indexing.html"> 
+    <a class="nav-link active" href="./sci_indexing.html" aria-current="page"> 
 <span class="menu-text">New Gen Research Indexing</span></a>
   </li>  
 </ul>
@@ -117,86 +117,38 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>This research will apply the concept of the procedural knowledge library to the process of knowledge production itself.</p>
-<p>A library is a curated, organized collection of ideas, concepts, and facts, transformed into structured representations that users can access, interpret, and understand. It bridges raw information and human knowledge, providing tools to make meaning accessible. Libraries take many forms, as information can be encoded in text, sound, images, data, and more.</p>
-<p>While traditional libraries rely on static representations (e.g., printed books, fixed records), information is inherently dynamic. Today, we can also represent information dynamically—through interactive media, real-time data, and evolving digital archives. Libraries must adapt to these forms. Here, I focus on the digital medium and the dynamic artifacts it produces, such as the programs that live in repositories.</p>
-<section id="preserving-the-model-development-process" class="level2">
-<h2 class="anchored" data-anchor-id="preserving-the-model-development-process">Preserving the model-development process</h2>
-<p>I envision that the core tenet of modern knowledge work will be model-building—finding the right representations of our goals, specifying them, and iteratively refining them over time. Furthermore, with AI, traditionally imperative workflows will shift toward a more declarative paradigm: users will define their goals rather than specifying the steps required to achieve them.</p>
-<p>In short, we have a significant opportunity to improve insight generation by using procedural knowledge capture to document how models are built and how they evolve over time.</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">–</h2>
 </section>
-</section>
-<section id="project-overview" class="level1">
-<h1>Project Overview</h1>
-<p>This work is divided into two interconnected projects:</p>
-<ol type="1">
-<li><p>A <strong>conceptual framework</strong> for procedural knowledge libraries, which defines their core functions, challenges, and potential applications. In this work, I specifically want to focus on the graphical model-builders’ workflow as a case study. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
-<li><p>A <strong>practical implementation</strong> using <a href="https://github.com/davidad/chit">Chit</a>, an experimental version-control system, as a test-bed to explore how such libraries can handle dynamic artifacts like code-generated visualizations.</p></li>
-</ol>
-<section id="conceptual-framework" class="level2">
-<h2 class="anchored" data-anchor-id="conceptual-framework">Conceptual framework</h2>
-<div class="flushleft">
-<p>The paper will include the following:</p>
-</div>
-</section>
-<section id="version-control-for-structured-graphical-data" class="level2">
-<h2 class="anchored" data-anchor-id="version-control-for-structured-graphical-data">Version Control for Structured Graphical Data</h2>
-<section id="version-control-repositories-as-libraries" class="level3">
-<h3 class="anchored" data-anchor-id="version-control-repositories-as-libraries">Version Control Repositories as Libraries</h3>
-<p>While not traditionally viewed as such, version control systems like Git and their logs are libraries because they organize, preserve, and provide access to structured knowledge—documenting code evolution, decisions, and project histories. These dynamic artifacts act as repositories, lets users to interpret, understand, and build upon the work of others.</p>
-<p>Visual representations reveal patterns in complex data that text alone cannot. Exploratory data analysis serves as a systematic method for sense-making through these visualizations. This project proposes insight provenance—capturing not just final visualizations but the journey of analysis that produced them. At large, I see this is a project of capturing the reasoning process, in this case, using visualizations to make sense of complex datasets.</p>
-</section>
-<section id="implementation" class="level3">
-<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
-<p>This project extends <a href="https://github.com/davidad/chit">Chit</a>, an experimental version-control system for structured data, to declarative graphical languages. Presently, developers using data visualization tools—such as <a href="https://observablehq.com/">Observable</a>, <a href="https://hex.tech/">Hex</a>, and <a href="https://jupyter.org/">Jupyter</a> notebooks—lack adequate version control systems suited for visual, exploratory, and iterative workflows. These workflows often involve open-ended methods to achieve an unstructured goal, making traditional file-based version control insufficient.</p>
-<p>I will apply this system to graphical representations, such as <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>–a high-level visualization grammar. As a library, it will incorporate version control to capture the process of creating and refining visualizations. Additionally, it will be extended to support core library functions, such as retrieving past history and enabling search across historical versions.</p>
-<p>Given Chit’s experimental and early-stage nature, I plan to build my own understanding of its approach, extract its core principles, and develop a bespoke system tailored to procedural knowledge libraries. Where elements are retained from Chit, I will provide technical exposition to explain their design and rationale. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p>While still in its early stages, Chit lays a strong foundation for the broader project and aligns with my vision for the library of the future: a system that works with dynamic artifacts—such as code-generated visualizations—whose context must be organized and preserved. Chit was originally developed to help build auditable, interpretable AI systems while being extensible to less-structured personal knowledge and logic languages (e.g., SQL).</p>
-</section>
-<section id="informing-the-theory" class="level3">
-<h3 class="anchored" data-anchor-id="informing-the-theory">Informing the theory</h3>
-<p>This project serves as a test-bed to explore key questions that can inform the former:</p>
+<section id="new-gen-research-indexing" class="level1">
+<h1>New Gen Research Indexing</h1>
+<p>Elevator pitch: Our research corpora is the collection of human insight. Certain aspects were thoughtfully constructed (i.e.&nbsp;citations and indexing algorithms), others were products of circumstance, and some are relics of the past. What does the ideal scientific literature, corpora, and search engine interface look like (in the generative age)? With the main goal being that researchers should be able to find the work that is the most valuable to them. An auxiliary goal being that automated reasoning systems (ML systems) can best take advantage of the literature to speed up the discovery process. The (key) audience in mind is the Google Scholar team; a secondary audience would be the Elicit AI team.</p>
+<p>Core Q: How is the discovery, evaluation, and use of research changing in the generative era? How can we redesign research indexing to meet these new challenges and opportunities?</p>
+<p>Novel contributions: In the rigorous, quantitative estimate of an implemented framework, detailed sketch of what an implementation would look like, the review of the literature because it’s been unexplored. Solid, concrete directions for work (practical, useful details and caveats).</p>
 <ul>
-<li><p>What trade-offs exist in designing an efficient yet expressive history-tracking system?</p></li>
-<li><p>How can Chit handle visual representation changes, such as diffing and merging Vega-Lite specifications?</p></li>
-<li><p>How could this extend to knowledge structures like RDF and OWL?</p></li>
+<li>We could enter a new age of search indexing (where it’s dynamic, concept-based, and decentralized): imagine that you had influence scores for training data inputs.</li>
+<li>Synthetic or low-value research is much easier to produce now and indexers should work on promoting high-value, novel content to those who are using a search engine.</li>
+<li>Tagging papers by type (survey, experimental, empirical, etc.).</li>
+<li>Privacy-preserving activity logging and knowing where sources are found from.</li>
+<li>Memorized completions aren’t as useful here.</li>
+<li>Centralized platforms own critical metadata (e.g.&nbsp;citation graphs) that make decentralized or open alternatives difficult to access.</li>
+<li>Keeping the chat history for certain projects centralized and then citing them.</li>
+<li>A new age of search for research papers that relate to the concepts in the papers themselves: how do you unlock semantic search?</li>
+<li>Integrating OpenReview and peer review into the search process as a means of including confidence metrics into the works themselves.</li>
+<li>Questions: What is Google Scholar’s dominance and over what time period?</li>
+<li>Having citations for Datasets (NeurIPS announced their Datasets and Benchmark track in 2022 and we should incentivize the development of datasets and part of that comes with attribution and ownership)</li>
 </ul>
-<p>The final work will fully explain why this specific interpretation of a "procedural knowledge library" was worth exploring. I will outline the attributes of this particular instance of a procedural knowledge library informed by the conceptual framework above. This will test the universal properties of a procedural knowledge library, including: the types of procedures it supports, their medium of representation, the features of the goals it targets, and the decision to extend Chit rather than starting from scratch.</p>
-</section>
-</section>
-</section>
-<section id="future-work" class="level1">
-<h1>Future Work</h1>
-<p>In my foundational research agenda, I outlined a series of questions. Here, I list some more that may or may not become the basis of future projects.</p>
-<section id="diffing-ml-model-evolution" class="level2">
-<h2 class="anchored" data-anchor-id="diffing-ml-model-evolution">Diffing ML model evolution</h2>
-<p><a href="https://transformer-circuits.pub/2024/model-diffing/index.html">Model diffing</a> is a new ML interpretability technique in which LLMs are compared by analyzing their internal representations. We could potentially extend this by first having models generate graphical representations of their own internal structures (e.g.&nbsp;with <a href="https://github.com/hycis/TensorGraph">TensorGraph</a>). Then we apply model diffing and structured versioning techniques to the graphical representations they generate.</p>
-<p>This approach could improve fine-tuning, enhance interpretability, and help researchers track model evolution over time. This builds on Gurnee and Tegmark’s (2024) <a href="https://arxiv.org/abs/2310.02207">work</a> finding that models learn linear representations of space and time.</p>
-<p>While they manually visualized these representations, we might ask models to programmatically generate these visualizations themselves, perhaps expressing their reasoning in declarative graphical languages such as DOT (used by Graphviz), Mermaid, TikZ, D3.js, or ONNX. For example, a model could output its attention patterns as a Mermaid diagram, or express its learned spatial representations as TikZ code that researchers could then visualize, analyze, and compare across model versions.</p>
-</section>
-<section id="model-interoperability" class="level2">
-<h2 class="anchored" data-anchor-id="model-interoperability">Model Interoperability</h2>
+<section id="auxiliary" class="level2">
+<h2 class="anchored" data-anchor-id="auxiliary">Auxiliary</h2>
 <ul>
-<li><p>How can denotational semantics—a method of mathematically formalizing the meaning of programming operations—serve as a common framework for managing models across different programming languages?</p></li>
-<li><p>How can we combine declarative programming paradigms with denotational techniques to better capture developer intentions?</p></li>
-<li><p>What formal methods could be developed to ‘diff’ the semantic meaning and goals of code as it evolves over time, going beyond just analyzing syntactic changes?</p></li>
-<li><p>Additionally, how can we enable reasoning about systems that mix formal, semi-formal, and informal representations?</p></li>
+<li>Some issues like if you web scrapers that surpass paywalls then the scientists don’t get paid (but that never really mattered: could run an experiment and see if that’s possible – jailbreaking)</li>
 </ul>
 
 
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Inspired by survey papers from ACM Transactions on Knowledge Discovery from Data: <a href="https://dl.acm.org/doi/pdf/10.1145/3363574#page=6.82">1</a>, <a href="https://dl.acm.org/doi/pdf/10.1145/3447822">2</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>For an example of a theory-driven implementation paper, see <em>Designing Datalog-Based Embedded Languages</em> at <a href="https://arxiv.org/abs/2305.14773">arXiv:2305.14773</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

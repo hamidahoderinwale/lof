@@ -10,4 +10,6 @@ website:
       - href: pkl_outline.qmd
         text: Project Overview 
       - href: draftdviz.qmd 
-        text: Draft
+        text: Data Viz Version Control Draft 
+      - href: sci_indexing.qmd
+        text: New Gen Research Indexing 
