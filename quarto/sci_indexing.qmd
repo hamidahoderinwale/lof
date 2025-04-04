@@ -6,6 +6,7 @@ Elevator pitch: Our research corpora is the collection of human insight. Certain
 # Audience 
 The (key) audience in mind is the Google Scholar team; a secondary audience would be the Elicit AI team.
 
+# Overview 
 Core Q: How is the discovery, evaluation, and use of research changing in the generative era? How can we redesign research indexing to meet these new challenges and opportunities?
 
 Novel contributions: In the rigorous, quantitative estimate of an implemented framework, detailed sketch of what an implementation would look like, the review of the literature because it’s been unexplored. Solid, concrete directions for work (practical, useful details and caveats).
