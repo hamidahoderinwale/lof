@@ -87,8 +87,10 @@ of work to address them.
 - Versioning with a Distributed Version Control System (DVCS) such as Git where you have logs of your past commits (that make your versions) and cloud DVCS where you're able to collaborate with others. Here, there's not only versions pertinent to the changes that you make, but the changes that other people make to your instance of the project, forked versions of your project, and the changes that their collaborators make to those instances.
 - There's a number of domain-specific projects and tools, such as [CodaLab](https://codalab.org/) where machine learning researchers can host and run their experiments (reproducible) and share their papers in executable form as worksheets.
 - For visualization workflows--the primary application of this project--there's [VisTrails](https://www.vistrails.org//index.php/Main_Page), a provenance tracker for visualizations where data is stored in XML files. With it, users can query workflows, as the system tracks decisions and data products to help answer the actions that led to a result. It's core focus is reproducibility. It's mainly developed for Python and Python-based visualization libraries.
+- There's [Chit](https://github.com/davidad/chit), an early-stage structured data version control project. 
 
 [Perplexity trail](https://www.perplexity.ai/search/overview-of-viztrails-fCsottRfQR6P0aoMyMLVZg) (could VizTrail work for a UMAP model and viz? What are its capabilities?)
+# Libraries and why they're valuable 
 
 # Overview
 
