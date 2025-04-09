@@ -34,7 +34,7 @@ Novel contributions: In the rigorous, quantitative estimate of an implemented fr
     - Having hashes for files on the arXiv as digital fingerprints
     - Encouraging meta-analyses and visualizations of the google scholar dataset ([see the ISBN visualization bounty](https://annas-archive.org/blog/all-isbns-winners.html))
     - In 2014, there were 160 million documents indexed [re: Wired article]. *Get the current number and compare across repositories (i.e. Elsevier, ArXiv, etc.)
-GScholar History & Background 
+# GScholar History & Background 
 - Developed by Alex Verstak and Anurag Acharya (both still at Google)
 - Going through their most recent work and GScholar history: 
     - Verstak and Acharya filed a patent in 2017, approved in 2019 (?), (on behalf of Google) on a system for identifying the primary source of a document when there are mulitple versions of a document. As it is, internet search engines don't have supervisory control which means that a multi-authored paper should be submitted by one of the editors to ensure that there is only one version and the history can be tracked as such. Their system involves an authority conferral for each version of a document obtained from different sources (i.e. different publishers, pre-print servers, repositories, etc.). 
