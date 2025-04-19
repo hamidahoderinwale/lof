@@ -344,8 +344,18 @@ Visualizations of learned representations or models. Visualization are
 post-hoc interpretations and we render visualization to qualitatively
 capture what models have learned.
 
+# Relevant Work 
+
+https://learn.hex.tech/docs/explore-data/projects/history-and-versions (Hex Notebooks and their versioning capabilities)
+
 Is it possible to come up with a [rigorous standard of
 correctness](https://dl.acm.org/doi/pdf/10.1145/3236386.3241340)?
+
+Overview of (ML) model viz libs
+- Pysvelte 
+- LLM Comporator: https://arxiv.org/pdf/2402.10524 
+
+
 
 # Relevant
 
@@ -354,6 +364,7 @@ Margo Seltzer
 New York Times R&D
 
 Case-studies on Datawrapper, Tableau, etc.
+
 
 ## Annotated Bib
 
